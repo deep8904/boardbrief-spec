@@ -1,0 +1,200 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* BoardBrief Design System
+   Premium SaaS aesthetic from Haven/Samfund screenshots
+   Light theme only - no dark mode
+   All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Page backgrounds */
+    --background: 210 20% 98%;
+    --foreground: 220 25% 12%;
+
+    /* Card/Surface */
+    --card: 0 0% 100%;
+    --card-foreground: 220 25% 12%;
+
+    /* Popover */
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 25% 12%;
+
+    /* Primary - Bright clean blue */
+    --primary: 200 100% 45%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary - Light gray surface */
+    --secondary: 210 14% 96%;
+    --secondary-foreground: 220 25% 12%;
+
+    /* Muted */
+    --muted: 210 14% 96%;
+    --muted-foreground: 220 10% 50%;
+
+    /* Accent - Warm orange */
+    --accent: 24 95% 55%;
+    --accent-foreground: 0 0% 100%;
+
+    /* Destructive */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Borders & Inputs - extremely subtle */
+    --border: 220 14% 92%;
+    --input: 220 14% 92%;
+    --ring: 200 100% 45%;
+
+    /* Radius - very rounded */
+    --radius: 16px;
+
+    /* Pastel colors for dashboard tiles */
+    --pastel-mint: 90 65% 88%;
+    --pastel-mint-dark: 90 45% 35%;
+    --pastel-sky: 190 80% 90%;
+    --pastel-sky-dark: 190 60% 35%;
+    --pastel-lavender: 45 85% 90%;
+    --pastel-lavender-dark: 45 70% 35%;
+    --pastel-peach: 15 85% 92%;
+    --pastel-peach-dark: 15 60% 40%;
+
+    /* Success/Warning/Danger - soft */
+    --success: 142 71% 45%;
+    --success-bg: 142 76% 95%;
+    --warning: 38 92% 50%;
+    --warning-bg: 48 96% 95%;
+    --danger: 0 84% 60%;
+    --danger-bg: 0 86% 97%;
+
+    /* Sidebar */
+    --sidebar-background: 210 14% 97%;
+    --sidebar-foreground: 220 25% 12%;
+    --sidebar-primary: 200 100% 45%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 210 14% 93%;
+    --sidebar-accent-foreground: 220 25% 12%;
+    --sidebar-border: 220 14% 92%;
+    --sidebar-ring: 200 100% 45%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+}
+
+@layer components {
+  /* Card styles */
+  .card-surface {
+    @apply bg-card rounded-xl border border-border;
+    box-shadow: 0 2px 8px -2px hsl(220 25% 12% / 0.05), 0 0 0 1px hsl(220 14% 92% / 0.6);
+  }
+
+  .card-elevated {
+    @apply bg-card rounded-xl;
+    box-shadow: 0 2px 8px -2px hsl(220 25% 12% / 0.05), 0 0 0 1px hsl(220 14% 92% / 0.6);
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+  }
+
+  .card-elevated:hover {
+    box-shadow: 0 8px 24px -4px hsl(220 25% 12% / 0.08), 0 0 0 1px hsl(220 14% 85% / 0.8);
+  }
+
+  /* Pastel card variants */
+  .card-mint {
+    @apply rounded-xl;
+    background: linear-gradient(135deg, hsl(90 65% 90%) 0%, hsl(90 65% 85%) 100%);
+  }
+
+  .card-sky {
+    @apply rounded-xl;
+    background: linear-gradient(135deg, hsl(190 80% 92%) 0%, hsl(190 80% 87%) 100%);
+  }
+
+  .card-lavender {
+    @apply rounded-xl;
+    background: linear-gradient(135deg, hsl(45 85% 92%) 0%, hsl(45 85% 88%) 100%);
+  }
+
+  .card-peach {
+    @apply rounded-xl;
+    background: linear-gradient(135deg, hsl(15 85% 94%) 0%, hsl(15 85% 90%) 100%);
+  }
+
+  .card-accent {
+    @apply rounded-xl bg-accent text-accent-foreground;
+  }
+
+  /* Typography */
+  .text-hero {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    @apply text-foreground;
+  }
+
+  .text-section {
+    @apply text-2xl md:text-3xl font-bold tracking-tight text-foreground;
+  }
+
+  .text-page-title {
+    @apply text-2xl md:text-3xl font-bold tracking-tight text-foreground;
+  }
+
+  .text-card-title {
+    @apply text-lg font-semibold text-foreground;
+  }
+
+  .text-body {
+    @apply text-base text-foreground leading-relaxed;
+  }
+
+  .text-muted-body {
+    @apply text-base text-muted-foreground leading-relaxed;
+  }
+
+  .text-stat {
+    @apply text-3xl md:text-4xl font-bold tracking-tight;
+  }
+
+  /* Button styles */
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-full font-semibold;
+    @apply bg-primary text-primary-foreground;
+    @apply hover:bg-primary/90 transition-all duration-200;
+    box-shadow: 0 2px 8px -2px hsl(200 100% 45% / 0.3);
+  }
+
+  .btn-primary:hover {
+    box-shadow: 0 4px 12px -2px hsl(200 100% 45% / 0.4);
+    transform: translateY(-1px);
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-full font-semibold;
+    @apply bg-secondary text-secondary-foreground border border-border;
+    @apply hover:bg-secondary/80 transition-all duration-200;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center px-4 py-2 rounded-lg font-medium;
+    @apply text-muted-foreground hover:text-foreground hover:bg-secondary/50;
+    @apply transition-colors duration-200;
+  }
+}
